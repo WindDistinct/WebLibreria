@@ -1,0 +1,2113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbLibreriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Almacen">
+          <Key>
+            <PropertyRef Name="alm_id" />
+          </Key>
+          <Property Name="alm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alm_sec" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="alm_desc" Type="varchar" MaxLength="20" />
+          <Property Name="alm_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="alm_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="alm_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="alm_fec_mod" Type="datetime" />
+          <Property Name="alm_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Autor">
+          <Key>
+            <PropertyRef Name="aut_id" />
+          </Key>
+          <Property Name="aut_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aut_nom" Type="varchar" MaxLength="15" />
+          <Property Name="aut_ape" Type="varchar" MaxLength="30" />
+          <Property Name="aut_foto" Type="varbinary(max)" />
+          <Property Name="aut_pais" Type="varchar" MaxLength="15" />
+          <Property Name="aut_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="aut_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="aut_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="aut_fec_mod" Type="datetime" />
+          <Property Name="aut_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Cliente">
+          <Key>
+            <PropertyRef Name="cli_id" />
+          </Key>
+          <Property Name="cli_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cli_nom" Type="varchar" MaxLength="15" />
+          <Property Name="cli_ape" Type="varchar" MaxLength="20" />
+          <Property Name="cli_dir" Type="varchar" MaxLength="30" />
+          <Property Name="cli_tel" Type="varchar" MaxLength="11" />
+          <Property Name="cli_mail" Type="varchar" MaxLength="30" />
+          <Property Name="cli_dni" Type="varchar" MaxLength="8" />
+          <Property Name="ubg_id" Type="nchar" MaxLength="6" />
+          <Property Name="cli_fec_nac" Type="date" />
+          <Property Name="cli_sex" Type="char" MaxLength="1" />
+          <Property Name="cli_foto" Type="image" />
+          <Property Name="cli_memb_tipo" Type="int" />
+          <Property Name="cli_memb_cad" Type="datetime" />
+          <Property Name="cli_user_reg" Type="varchar" MaxLength="36" />
+          <Property Name="cli_fec_reg" Type="datetime" />
+          <Property Name="cli_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="cli_fec_mod" Type="datetime" />
+          <Property Name="cli_state" Type="bit" />
+        </EntityType>
+        <EntityType Name="tb_Editorial">
+          <Key>
+            <PropertyRef Name="edi_id" />
+          </Key>
+          <Property Name="edi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="edi_nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="edi_dir" Type="varchar" MaxLength="30" />
+          <Property Name="ubg_id" Type="nchar" MaxLength="6" />
+          <Property Name="edi_tel" Type="varchar" MaxLength="11" />
+          <Property Name="edi_mail" Type="varchar" MaxLength="30" />
+          <Property Name="edi_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="edi_fec_reg" Type="datetime" />
+          <Property Name="edi_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="edi_fec_mod" Type="datetime" />
+          <Property Name="edi_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Ejemplar">
+          <Key>
+            <PropertyRef Name="ejem_id" />
+          </Key>
+          <Property Name="ejem_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lib_id" Type="int" Nullable="false" />
+          <Property Name="ejem_disp" Type="bit" Nullable="false" />
+          <Property Name="ejem_condicion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="alm_id" Type="int" />
+          <Property Name="ejem_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="ejem_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="ejem_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="ejem_fec_mod" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Genero">
+          <Key>
+            <PropertyRef Name="gen_id" />
+          </Key>
+          <Property Name="gen_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gen_desc" Type="varchar" MaxLength="20" />
+          <Property Name="gen_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="gen_fec_reg" Type="datetime" />
+          <Property Name="gen_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="gen_fec_mod" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Libro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="lib_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lib_nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aut_id" Type="int" />
+          <Property Name="gen_id" Type="int" />
+          <Property Name="lib_edi" Type="varchar" MaxLength="20" />
+          <Property Name="lib_fec_pub" Type="int" />
+          <Property Name="lib_disp_stock" Type="int" Nullable="false" />
+          <Property Name="edi_id" Type="int" Nullable="false" />
+          <Property Name="lib_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="lib_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="lib_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="lib_fec_mod" Type="datetime" />
+          <Property Name="lib_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Personal">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="per_nom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="per_ape_pat" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="per_ape_mat" Type="varchar" MaxLength="20" />
+          <Property Name="per_dir" Type="varchar" MaxLength="50" />
+          <Property Name="ubg_id" Type="nchar" MaxLength="6" />
+          <Property Name="per_tel" Type="varchar" MaxLength="11" />
+          <Property Name="per_dni" Type="varchar" MaxLength="8" />
+          <Property Name="per_mail" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="per_pass" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="per_foto" Type="image" />
+          <Property Name="per_fec_ing" Type="date" />
+          <Property Name="per_user_reg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="per_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="per_user_mod" Type="varchar" MaxLength="50" />
+          <Property Name="per_fec_mod" Type="datetime" />
+          <Property Name="per_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Renta">
+          <Key>
+            <PropertyRef Name="rent_id" />
+          </Key>
+          <Property Name="rent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cli_id" Type="int" Nullable="false" />
+          <Property Name="ejem_id" Type="int" Nullable="false" />
+          <Property Name="rent_fec" Type="date" Nullable="false" />
+          <Property Name="rent_fec_dev" Type="date" />
+          <Property Name="rent_obs" Type="varchar" MaxLength="50" />
+          <Property Name="rent_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="rent_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="rent_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="rent_fec_mod" Type="datetime" />
+          <Property Name="rent_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Requerimiento">
+          <Key>
+            <PropertyRef Name="req_id" />
+          </Key>
+          <Property Name="req_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="edi_id" Type="int" Nullable="false" />
+          <Property Name="req_fec_emi" Type="date" />
+          <Property Name="req_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="req_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="req_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="req_fec_mod" Type="datetime" />
+          <Property Name="req_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Requerimiento_detalle">
+          <Key>
+            <PropertyRef Name="req_id" />
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="req_id" Type="int" Nullable="false" />
+          <Property Name="lib_id" Type="int" Nullable="false" />
+          <Property Name="lib_cant_sol" Type="int" Nullable="false" />
+          <Property Name="req_det_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="req_det_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="req_det_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="req_det_fec_mod" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="ubg_id" />
+          </Key>
+          <Property Name="ubg_id" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="ubg_reg_id" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="ubg_prov_id" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="ubg_dist_id" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="ubg_reg" Type="varchar" MaxLength="20" />
+          <Property Name="ubg_prov" Type="varchar" MaxLength="20" />
+          <Property Name="ubg_dist" Type="varchar" MaxLength="20" />
+          <Property Name="ubg_user_reg" Type="varchar" MaxLength="36" />
+          <Property Name="ubg_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="ubg_user_mod" Type="varchar" MaxLength="50" />
+          <Property Name="ubg_fec_mod" Type="datetime" />
+          <Property Name="ubg_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbLibreria.dbo.vw_VistaAutor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_VistaAutor">
+          <Key>
+            <PropertyRef Name="aut_id" />
+            <PropertyRef Name="aut_user_reg" />
+            <PropertyRef Name="aut_fec_reg" />
+            <PropertyRef Name="aut_state" />
+          </Key>
+          <Property Name="aut_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aut_nom" Type="varchar" MaxLength="15" />
+          <Property Name="aut_ape" Type="varchar" MaxLength="30" />
+          <Property Name="aut_foto" Type="varbinary(max)" />
+          <Property Name="aut_pais" Type="varchar" MaxLength="15" />
+          <Property Name="aut_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="aut_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="aut_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="aut_fec_mod" Type="datetime" />
+          <Property Name="aut_state" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbLibreria.dbo.vw_VistaClientes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_VistaClientes">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="cli_id" Type="int" Nullable="false" />
+          <Property Name="cli_nom" Type="varchar" MaxLength="15" />
+          <Property Name="cli_ape" Type="varchar" MaxLength="20" />
+          <Property Name="cli_dir" Type="varchar" MaxLength="30" />
+          <Property Name="cli_tel" Type="varchar" MaxLength="11" />
+          <Property Name="cli_mail" Type="varchar" MaxLength="30" />
+          <Property Name="cli_dni" Type="varchar" MaxLength="8" />
+          <Property Name="ubg_id" Type="nchar" MaxLength="6" />
+          <Property Name="cli_fec_nac" Type="date" />
+          <Property Name="cli_sex" Type="char" MaxLength="1" />
+          <Property Name="cli_foto" Type="image" />
+          <Property Name="cli_memb_tipo" Type="int" />
+          <Property Name="cli_memb_cad" Type="datetime" />
+          <Property Name="cli_user_reg" Type="varchar" MaxLength="36" />
+          <Property Name="cli_fec_reg" Type="datetime" />
+          <Property Name="cli_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="cli_fec_mod" Type="datetime" />
+          <Property Name="cli_state" Type="bit" />
+          <Property Name="ubg_reg" Type="varchar" MaxLength="20" />
+          <Property Name="ubg_prov" Type="varchar" MaxLength="20" />
+          <Property Name="ubg_dist" Type="varchar" MaxLength="20" />
+          <Property Name="Expr1" Type="nchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbLibreria.dbo.vw_VistaLibro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_VistaLibro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+            <PropertyRef Name="lib_nom" />
+            <PropertyRef Name="lib_disp_stock" />
+            <PropertyRef Name="edi_id" />
+            <PropertyRef Name="lib_user_reg" />
+            <PropertyRef Name="lib_fec_reg" />
+            <PropertyRef Name="lib_state" />
+            <PropertyRef Name="edi_nom" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="lib_id" Type="int" Nullable="false" />
+          <Property Name="lib_nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aut_id" Type="int" />
+          <Property Name="gen_id" Type="int" />
+          <Property Name="lib_edi" Type="varchar" MaxLength="20" />
+          <Property Name="lib_fec_pub" Type="int" />
+          <Property Name="lib_disp_stock" Type="int" Nullable="false" />
+          <Property Name="edi_id" Type="int" Nullable="false" />
+          <Property Name="lib_user_reg" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="lib_fec_reg" Type="datetime" Nullable="false" />
+          <Property Name="lib_user_mod" Type="varchar" MaxLength="36" />
+          <Property Name="lib_fec_mod" Type="datetime" />
+          <Property Name="lib_state" Type="bit" Nullable="false" />
+          <Property Name="gen_desc" Type="varchar" MaxLength="20" />
+          <Property Name="edi_nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="aut_nom" Type="varchar" MaxLength="15" />
+          <Property Name="aut_ape" Type="varchar" MaxLength="30" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="Expr2" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbLibreria.dbo.vw_VistaLibrosRentados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_VistaLibrosRentados">
+          <Key>
+            <PropertyRef Name="rent_id" />
+            <PropertyRef Name="rent_fec" />
+            <PropertyRef Name="ejem_id" />
+            <PropertyRef Name="lib_id" />
+            <PropertyRef Name="lib_nom" />
+            <PropertyRef Name="edi_id" />
+            <PropertyRef Name="edi_nom" />
+          </Key>
+          <Property Name="rent_id" Type="int" Nullable="false" />
+          <Property Name="rent_fec" Type="date" Nullable="false" />
+          <Property Name="rent_fec_dev" Type="date" />
+          <Property Name="ejem_id" Type="int" Nullable="false" />
+          <Property Name="lib_id" Type="int" Nullable="false" />
+          <Property Name="lib_nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="aut_id" Type="int" />
+          <Property Name="aut_nom" Type="varchar" MaxLength="15" />
+          <Property Name="aut_ape" Type="varchar" MaxLength="30" />
+          <Property Name="gen_id" Type="int" />
+          <Property Name="gen_desc" Type="varchar" MaxLength="20" />
+          <Property Name="edi_id" Type="int" Nullable="false" />
+          <Property Name="edi_nom" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ejemplar_Almacen">
+          <End Role="tb_Almacen" Type="Self.tb_Almacen" Multiplicity="0..1" />
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Almacen">
+              <PropertyRef Name="alm_id" />
+            </Principal>
+            <Dependent Role="tb_Ejemplar">
+              <PropertyRef Name="alm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejemplar_Libro">
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="1" />
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Libro">
+              <PropertyRef Name="lib_id" />
+            </Principal>
+            <Dependent Role="tb_Ejemplar">
+              <PropertyRef Name="lib_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Autor">
+          <End Role="tb_Autor" Type="Self.tb_Autor" Multiplicity="0..1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Autor">
+              <PropertyRef Name="aut_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="aut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Editorial">
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Editorial">
+              <PropertyRef Name="edi_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="edi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Genero">
+          <End Role="tb_Genero" Type="Self.tb_Genero" Multiplicity="0..1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Genero">
+              <PropertyRef Name="gen_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="gen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Renta_Cliente">
+          <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="1" />
+          <End Role="tb_Renta" Type="Self.tb_Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Cliente">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="tb_Renta">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Renta_Ejemplar">
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="1" />
+          <End Role="tb_Renta" Type="Self.tb_Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ejemplar">
+              <PropertyRef Name="ejem_id" />
+            </Principal>
+            <Dependent Role="tb_Renta">
+              <PropertyRef Name="ejem_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_detalle_Libro">
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="1" />
+          <End Role="tb_Requerimiento_detalle" Type="Self.tb_Requerimiento_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Libro">
+              <PropertyRef Name="lib_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento_detalle">
+              <PropertyRef Name="lib_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_detalle_Requerimiento">
+          <End Role="tb_Requerimiento" Type="Self.tb_Requerimiento" Multiplicity="1" />
+          <End Role="tb_Requerimiento_detalle" Type="Self.tb_Requerimiento_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Requerimiento">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento_detalle">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_Editorial">
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="1" />
+          <End Role="tb_Requerimiento" Type="Self.tb_Requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Editorial">
+              <PropertyRef Name="edi_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento">
+              <PropertyRef Name="edi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Cliente_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Cliente">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Editorial_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Editorial">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Personal_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Personal" Type="Self.tb_Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Personal">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_ConsultarAutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aut_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cli_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ConsultarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lib_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_EditarAutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aut_id" Type="int" Mode="In" />
+          <Parameter Name="aut_nom" Type="varchar" Mode="In" />
+          <Parameter Name="aut_ape" Type="varchar" Mode="In" />
+          <Parameter Name="aut_pais" Type="varchar" Mode="In" />
+          <Parameter Name="aut_foto" Type="image" Mode="In" />
+          <Parameter Name="aut_user_mod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_EditarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cli_id" Type="int" Mode="In" />
+          <Parameter Name="cli_nom" Type="varchar" Mode="In" />
+          <Parameter Name="cli_ape" Type="varchar" Mode="In" />
+          <Parameter Name="cli_dir" Type="varchar" Mode="In" />
+          <Parameter Name="cli_tel" Type="varchar" Mode="In" />
+          <Parameter Name="cli_mail" Type="varchar" Mode="In" />
+          <Parameter Name="cli_dni" Type="varchar" Mode="In" />
+          <Parameter Name="ubg_id" Type="nchar" Mode="In" />
+          <Parameter Name="cli_fec_nac" Type="date" Mode="In" />
+          <Parameter Name="cli_sex" Type="char" Mode="In" />
+          <Parameter Name="cli_foto" Type="image" Mode="In" />
+          <Parameter Name="cli_user_mod" Type="varchar" Mode="In" />
+          <Parameter Name="cli_memb_tipo" Type="int" Mode="In" />
+          <Parameter Name="cli_memb_cad" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_EditarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lib_id" Type="int" Mode="In" />
+          <Parameter Name="lib_nom" Type="varchar" Mode="In" />
+          <Parameter Name="aut_id" Type="int" Mode="In" />
+          <Parameter Name="gen_id" Type="int" Mode="In" />
+          <Parameter Name="lib_edi" Type="varchar" Mode="In" />
+          <Parameter Name="lib_fec_pub" Type="int" Mode="In" />
+          <Parameter Name="lib_disp_stock" Type="int" Mode="In" />
+          <Parameter Name="edi_id" Type="int" Mode="In" />
+          <Parameter Name="lib_user_mod" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_FiltrarClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="filtrarPorNulos" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="usp_FiltrarLibrosxPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gen_id" Type="int" Mode="In" />
+          <Parameter Name="aut_id" Type="int" Mode="In" />
+          <Parameter Name="fecIn" Type="date" Mode="In" />
+          <Parameter Name="fecEn" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertaLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lib_nom" Type="varchar" Mode="In" />
+          <Parameter Name="aut_id" Type="int" Mode="In" />
+          <Parameter Name="gen_id" Type="int" Mode="In" />
+          <Parameter Name="lib_edi" Type="varchar" Mode="In" />
+          <Parameter Name="lib_fec_pub" Type="int" Mode="In" />
+          <Parameter Name="lib_disp_stock" Type="int" Mode="In" />
+          <Parameter Name="edi_id" Type="int" Mode="In" />
+          <Parameter Name="lib_user_reg" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarAutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aut_nom" Type="varchar" Mode="In" />
+          <Parameter Name="aut_ape" Type="varchar" Mode="In" />
+          <Parameter Name="aut_pais" Type="varchar" Mode="In" />
+          <Parameter Name="aut_foto" Type="image" Mode="In" />
+          <Parameter Name="aut_user_reg" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cli_nom" Type="varchar" Mode="In" />
+          <Parameter Name="cli_ape" Type="varchar" Mode="In" />
+          <Parameter Name="cli_dir" Type="varchar" Mode="In" />
+          <Parameter Name="cli_tel" Type="varchar" Mode="In" />
+          <Parameter Name="cli_mail" Type="varchar" Mode="In" />
+          <Parameter Name="cli_dni" Type="varchar" Mode="In" />
+          <Parameter Name="ubg_id" Type="nchar" Mode="In" />
+          <Parameter Name="cli_fec_nac" Type="date" Mode="In" />
+          <Parameter Name="cli_sex" Type="char" Mode="In" />
+          <Parameter Name="cli_foto" Type="image" Mode="In" />
+          <Parameter Name="cli_user_reg" Type="varchar" Mode="In" />
+          <Parameter Name="cli_memb_tipo" Type="int" Mode="In" />
+          <Parameter Name="cli_memb_cad" Type="date" Mode="In" />
+        </Function>
+        <Function Name="usp_ListarAutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarAutorCompuesto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarClienteSimple" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarEditorial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ListarLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_RentasMensuales" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_RentasxGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_Ubigeo_DistritosProvinciaRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdRegion" Type="nchar" Mode="In" />
+          <Parameter Name="IdProvincia" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_ProvinciasRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdRegion" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Ubigeo_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbLibreriaModelStoreContainer">
+          <EntitySet Name="tb_Almacen" EntityType="Self.tb_Almacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Autor" EntityType="Self.tb_Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Cliente" EntityType="Self.tb_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Editorial" EntityType="Self.tb_Editorial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Ejemplar" EntityType="Self.tb_Ejemplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Genero" EntityType="Self.tb_Genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Libro" EntityType="Self.tb_Libro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Personal" EntityType="Self.tb_Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Renta" EntityType="Self.tb_Renta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Requerimiento" EntityType="Self.tb_Requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Requerimiento_detalle" EntityType="Self.tb_Requerimiento_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Ubigeo" EntityType="Self.tb_Ubigeo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_VistaAutor" EntityType="Self.vw_VistaAutor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_VistaAutor].[aut_id] AS [aut_id], 
+    [vw_VistaAutor].[aut_nom] AS [aut_nom], 
+    [vw_VistaAutor].[aut_ape] AS [aut_ape], 
+    [vw_VistaAutor].[aut_foto] AS [aut_foto], 
+    [vw_VistaAutor].[aut_pais] AS [aut_pais], 
+    [vw_VistaAutor].[aut_user_reg] AS [aut_user_reg], 
+    [vw_VistaAutor].[aut_fec_reg] AS [aut_fec_reg], 
+    [vw_VistaAutor].[aut_user_mod] AS [aut_user_mod], 
+    [vw_VistaAutor].[aut_fec_mod] AS [aut_fec_mod], 
+    [vw_VistaAutor].[aut_state] AS [aut_state]
+    FROM [dbo].[vw_VistaAutor] AS [vw_VistaAutor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_VistaClientes" EntityType="Self.vw_VistaClientes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_VistaClientes].[cli_id] AS [cli_id], 
+    [vw_VistaClientes].[cli_nom] AS [cli_nom], 
+    [vw_VistaClientes].[cli_ape] AS [cli_ape], 
+    [vw_VistaClientes].[cli_dir] AS [cli_dir], 
+    [vw_VistaClientes].[cli_tel] AS [cli_tel], 
+    [vw_VistaClientes].[cli_mail] AS [cli_mail], 
+    [vw_VistaClientes].[cli_dni] AS [cli_dni], 
+    [vw_VistaClientes].[ubg_id] AS [ubg_id], 
+    [vw_VistaClientes].[cli_fec_nac] AS [cli_fec_nac], 
+    [vw_VistaClientes].[cli_sex] AS [cli_sex], 
+    [vw_VistaClientes].[cli_foto] AS [cli_foto], 
+    [vw_VistaClientes].[cli_memb_tipo] AS [cli_memb_tipo], 
+    [vw_VistaClientes].[cli_memb_cad] AS [cli_memb_cad], 
+    [vw_VistaClientes].[cli_user_reg] AS [cli_user_reg], 
+    [vw_VistaClientes].[cli_fec_reg] AS [cli_fec_reg], 
+    [vw_VistaClientes].[cli_user_mod] AS [cli_user_mod], 
+    [vw_VistaClientes].[cli_fec_mod] AS [cli_fec_mod], 
+    [vw_VistaClientes].[cli_state] AS [cli_state], 
+    [vw_VistaClientes].[ubg_reg] AS [ubg_reg], 
+    [vw_VistaClientes].[ubg_prov] AS [ubg_prov], 
+    [vw_VistaClientes].[ubg_dist] AS [ubg_dist], 
+    [vw_VistaClientes].[Expr1] AS [Expr1]
+    FROM [dbo].[vw_VistaClientes] AS [vw_VistaClientes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_VistaLibro" EntityType="Self.vw_VistaLibro" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_VistaLibro].[lib_id] AS [lib_id], 
+    [vw_VistaLibro].[lib_nom] AS [lib_nom], 
+    [vw_VistaLibro].[aut_id] AS [aut_id], 
+    [vw_VistaLibro].[gen_id] AS [gen_id], 
+    [vw_VistaLibro].[lib_edi] AS [lib_edi], 
+    [vw_VistaLibro].[lib_fec_pub] AS [lib_fec_pub], 
+    [vw_VistaLibro].[lib_disp_stock] AS [lib_disp_stock], 
+    [vw_VistaLibro].[edi_id] AS [edi_id], 
+    [vw_VistaLibro].[lib_user_reg] AS [lib_user_reg], 
+    [vw_VistaLibro].[lib_fec_reg] AS [lib_fec_reg], 
+    [vw_VistaLibro].[lib_user_mod] AS [lib_user_mod], 
+    [vw_VistaLibro].[lib_fec_mod] AS [lib_fec_mod], 
+    [vw_VistaLibro].[lib_state] AS [lib_state], 
+    [vw_VistaLibro].[gen_desc] AS [gen_desc], 
+    [vw_VistaLibro].[edi_nom] AS [edi_nom], 
+    [vw_VistaLibro].[aut_nom] AS [aut_nom], 
+    [vw_VistaLibro].[aut_ape] AS [aut_ape], 
+    [vw_VistaLibro].[Expr1] AS [Expr1], 
+    [vw_VistaLibro].[Expr2] AS [Expr2]
+    FROM [dbo].[vw_VistaLibro] AS [vw_VistaLibro]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_VistaLibrosRentados" EntityType="Self.vw_VistaLibrosRentados" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_VistaLibrosRentados].[rent_id] AS [rent_id], 
+    [vw_VistaLibrosRentados].[rent_fec] AS [rent_fec], 
+    [vw_VistaLibrosRentados].[rent_fec_dev] AS [rent_fec_dev], 
+    [vw_VistaLibrosRentados].[ejem_id] AS [ejem_id], 
+    [vw_VistaLibrosRentados].[lib_id] AS [lib_id], 
+    [vw_VistaLibrosRentados].[lib_nom] AS [lib_nom], 
+    [vw_VistaLibrosRentados].[aut_id] AS [aut_id], 
+    [vw_VistaLibrosRentados].[aut_nom] AS [aut_nom], 
+    [vw_VistaLibrosRentados].[aut_ape] AS [aut_ape], 
+    [vw_VistaLibrosRentados].[gen_id] AS [gen_id], 
+    [vw_VistaLibrosRentados].[gen_desc] AS [gen_desc], 
+    [vw_VistaLibrosRentados].[edi_id] AS [edi_id], 
+    [vw_VistaLibrosRentados].[edi_nom] AS [edi_nom]
+    FROM [dbo].[vw_VistaLibrosRentados] AS [vw_VistaLibrosRentados]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Ejemplar_Almacen" Association="Self.FK_Ejemplar_Almacen">
+            <End Role="tb_Almacen" EntitySet="tb_Almacen" />
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejemplar_Libro" Association="Self.FK_Ejemplar_Libro">
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Autor" Association="Self.FK_Libro_Autor">
+            <End Role="tb_Autor" EntitySet="tb_Autor" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Editorial" Association="Self.FK_Libro_Editorial">
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Genero" Association="Self.FK_Libro_Genero">
+            <End Role="tb_Genero" EntitySet="tb_Genero" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Renta_Cliente" Association="Self.FK_Renta_Cliente">
+            <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+            <End Role="tb_Renta" EntitySet="tb_Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Renta_Ejemplar" Association="Self.FK_Renta_Ejemplar">
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+            <End Role="tb_Renta" EntitySet="tb_Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_detalle_Libro" Association="Self.FK_Requerimiento_detalle_Libro">
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+            <End Role="tb_Requerimiento_detalle" EntitySet="tb_Requerimiento_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_detalle_Requerimiento" Association="Self.FK_Requerimiento_detalle_Requerimiento">
+            <End Role="tb_Requerimiento" EntitySet="tb_Requerimiento" />
+            <End Role="tb_Requerimiento_detalle" EntitySet="tb_Requerimiento_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_Editorial" Association="Self.FK_Requerimiento_Editorial">
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+            <End Role="tb_Requerimiento" EntitySet="tb_Requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Cliente_tb_Ubigeo" Association="Self.FK_tb_Cliente_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Editorial_tb_Ubigeo" Association="Self.FK_tb_Editorial_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Personal_tb_Ubigeo" Association="Self.FK_tb_Personal_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Personal" EntitySet="tb_Personal" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbLibreriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Almacen">
+          <Key>
+            <PropertyRef Name="alm_id" />
+          </Key>
+          <Property Name="alm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alm_sec" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alm_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="alm_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alm_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="alm_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="alm_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="alm_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Ejemplar" Relationship="Self.FK_Ejemplar_Almacen" FromRole="tb_Almacen" ToRole="tb_Ejemplar" />
+        </EntityType>
+        <EntityType Name="tb_Autor">
+          <Key>
+            <PropertyRef Name="aut_id" />
+          </Key>
+          <Property Name="aut_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aut_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_ape" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="aut_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="aut_pais" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="aut_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="aut_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="aut_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Libro" Relationship="Self.FK_Libro_Autor" FromRole="tb_Autor" ToRole="tb_Libro" />
+        </EntityType>
+        <EntityType Name="tb_Cliente">
+          <Key>
+            <PropertyRef Name="cli_id" />
+          </Key>
+          <Property Name="cli_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cli_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cli_ape" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cli_dir" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cli_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="cli_mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cli_dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_id" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="cli_fec_nac" Type="DateTime" Precision="0" />
+          <Property Name="cli_sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cli_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="cli_memb_tipo" Type="Int32" />
+          <Property Name="cli_memb_cad" Type="DateTime" Precision="3" />
+          <Property Name="cli_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="cli_fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="cli_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="cli_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="cli_state" Type="Boolean" />
+          <NavigationProperty Name="tb_Renta" Relationship="Self.FK_Renta_Cliente" FromRole="tb_Cliente" ToRole="tb_Renta" />
+          <NavigationProperty Name="tb_Ubigeo" Relationship="Self.FK_tb_Cliente_tb_Ubigeo" FromRole="tb_Cliente" ToRole="tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="tb_Editorial">
+          <Key>
+            <PropertyRef Name="edi_id" />
+          </Key>
+          <Property Name="edi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="edi_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edi_dir" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_id" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="edi_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="edi_mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="edi_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edi_fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="edi_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="edi_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="edi_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Libro" Relationship="Self.FK_Libro_Editorial" FromRole="tb_Editorial" ToRole="tb_Libro" />
+          <NavigationProperty Name="tb_Requerimiento" Relationship="Self.FK_Requerimiento_Editorial" FromRole="tb_Editorial" ToRole="tb_Requerimiento" />
+          <NavigationProperty Name="tb_Ubigeo" Relationship="Self.FK_tb_Editorial_tb_Ubigeo" FromRole="tb_Editorial" ToRole="tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="tb_Ejemplar">
+          <Key>
+            <PropertyRef Name="ejem_id" />
+          </Key>
+          <Property Name="ejem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lib_id" Type="Int32" Nullable="false" />
+          <Property Name="ejem_disp" Type="Boolean" Nullable="false" />
+          <Property Name="ejem_condicion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alm_id" Type="Int32" />
+          <Property Name="ejem_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ejem_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ejem_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ejem_fec_mod" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Almacen" Relationship="Self.FK_Ejemplar_Almacen" FromRole="tb_Ejemplar" ToRole="tb_Almacen" />
+          <NavigationProperty Name="tb_Libro" Relationship="Self.FK_Ejemplar_Libro" FromRole="tb_Ejemplar" ToRole="tb_Libro" />
+          <NavigationProperty Name="tb_Renta" Relationship="Self.FK_Renta_Ejemplar" FromRole="tb_Ejemplar" ToRole="tb_Renta" />
+        </EntityType>
+        <EntityType Name="tb_Genero">
+          <Key>
+            <PropertyRef Name="gen_id" />
+          </Key>
+          <Property Name="gen_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gen_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gen_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gen_fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="gen_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="gen_fec_mod" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Libro" Relationship="Self.FK_Libro_Genero" FromRole="tb_Genero" ToRole="tb_Libro" />
+        </EntityType>
+        <EntityType Name="tb_Libro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="lib_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lib_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_id" Type="Int32" />
+          <Property Name="gen_id" Type="Int32" />
+          <Property Name="lib_edi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lib_fec_pub" Type="Int32" />
+          <Property Name="lib_disp_stock" Type="Int32" Nullable="false" />
+          <Property Name="edi_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lib_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="lib_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="lib_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Autor" Relationship="Self.FK_Libro_Autor" FromRole="tb_Libro" ToRole="tb_Autor" />
+          <NavigationProperty Name="tb_Editorial" Relationship="Self.FK_Libro_Editorial" FromRole="tb_Libro" ToRole="tb_Editorial" />
+          <NavigationProperty Name="tb_Ejemplar" Relationship="Self.FK_Ejemplar_Libro" FromRole="tb_Libro" ToRole="tb_Ejemplar" />
+          <NavigationProperty Name="tb_Genero" Relationship="Self.FK_Libro_Genero" FromRole="tb_Libro" ToRole="tb_Genero" />
+          <NavigationProperty Name="tb_Requerimiento_detalle" Relationship="Self.FK_Requerimiento_detalle_Libro" FromRole="tb_Libro" ToRole="tb_Requerimiento_detalle" />
+        </EntityType>
+        <EntityType Name="tb_Personal">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="per_nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_ape_pat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_ape_mat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="per_dir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_id" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="per_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="per_dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="per_mail" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_pass" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="per_fec_ing" Type="DateTime" Precision="0" />
+          <Property Name="per_user_reg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="per_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="per_user_mod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="per_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="per_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Ubigeo" Relationship="Self.FK_tb_Personal_tb_Ubigeo" FromRole="tb_Personal" ToRole="tb_Ubigeo" />
+        </EntityType>
+        <EntityType Name="tb_Renta">
+          <Key>
+            <PropertyRef Name="rent_id" />
+          </Key>
+          <Property Name="rent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cli_id" Type="Int32" Nullable="false" />
+          <Property Name="ejem_id" Type="Int32" Nullable="false" />
+          <Property Name="rent_fec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="rent_fec_dev" Type="DateTime" Precision="0" />
+          <Property Name="rent_obs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rent_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rent_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rent_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="rent_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="rent_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_Renta_Cliente" FromRole="tb_Renta" ToRole="tb_Cliente" />
+          <NavigationProperty Name="tb_Ejemplar" Relationship="Self.FK_Renta_Ejemplar" FromRole="tb_Renta" ToRole="tb_Ejemplar" />
+        </EntityType>
+        <EntityType Name="tb_Requerimiento">
+          <Key>
+            <PropertyRef Name="req_id" />
+          </Key>
+          <Property Name="req_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="edi_id" Type="Int32" Nullable="false" />
+          <Property Name="req_fec_emi" Type="DateTime" Precision="0" />
+          <Property Name="req_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="req_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="req_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="req_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="req_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Editorial" Relationship="Self.FK_Requerimiento_Editorial" FromRole="tb_Requerimiento" ToRole="tb_Editorial" />
+          <NavigationProperty Name="tb_Requerimiento_detalle" Relationship="Self.FK_Requerimiento_detalle_Requerimiento" FromRole="tb_Requerimiento" ToRole="tb_Requerimiento_detalle" />
+        </EntityType>
+        <EntityType Name="tb_Requerimiento_detalle">
+          <Key>
+            <PropertyRef Name="req_id" />
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="req_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_cant_sol" Type="Int32" Nullable="false" />
+          <Property Name="req_det_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="req_det_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="req_det_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="req_det_fec_mod" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Libro" Relationship="Self.FK_Requerimiento_detalle_Libro" FromRole="tb_Requerimiento_detalle" ToRole="tb_Libro" />
+          <NavigationProperty Name="tb_Requerimiento" Relationship="Self.FK_Requerimiento_detalle_Requerimiento" FromRole="tb_Requerimiento_detalle" ToRole="tb_Requerimiento" />
+        </EntityType>
+        <EntityType Name="tb_Ubigeo">
+          <Key>
+            <PropertyRef Name="ubg_id" />
+          </Key>
+          <Property Name="ubg_id" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ubg_reg_id" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ubg_prov_id" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ubg_dist_id" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ubg_reg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_prov" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_dist" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ubg_user_mod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="ubg_state" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_Cliente_tb_Ubigeo" FromRole="tb_Ubigeo" ToRole="tb_Cliente" />
+          <NavigationProperty Name="tb_Editorial" Relationship="Self.FK_tb_Editorial_tb_Ubigeo" FromRole="tb_Ubigeo" ToRole="tb_Editorial" />
+          <NavigationProperty Name="tb_Personal" Relationship="Self.FK_tb_Personal_tb_Ubigeo" FromRole="tb_Ubigeo" ToRole="tb_Personal" />
+        </EntityType>
+        <EntityType Name="vw_VistaAutor">
+          <Key>
+            <PropertyRef Name="aut_id" />
+            <PropertyRef Name="aut_user_reg" />
+            <PropertyRef Name="aut_fec_reg" />
+            <PropertyRef Name="aut_state" />
+          </Key>
+          <Property Name="aut_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aut_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_ape" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="aut_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="aut_pais" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="aut_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="aut_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="aut_state" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_VistaClientes">
+          <Key>
+            <PropertyRef Name="cli_id" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="cli_id" Type="Int32" Nullable="false" />
+          <Property Name="cli_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cli_ape" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cli_dir" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cli_tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="cli_mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cli_dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_id" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+          <Property Name="cli_fec_nac" Type="DateTime" Precision="0" />
+          <Property Name="cli_sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="cli_foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="cli_memb_tipo" Type="Int32" />
+          <Property Name="cli_memb_cad" Type="DateTime" Precision="3" />
+          <Property Name="cli_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="cli_fec_reg" Type="DateTime" Precision="3" />
+          <Property Name="cli_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="cli_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="cli_state" Type="Boolean" />
+          <Property Name="ubg_reg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_prov" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ubg_dist" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_VistaLibro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+            <PropertyRef Name="lib_nom" />
+            <PropertyRef Name="lib_disp_stock" />
+            <PropertyRef Name="edi_id" />
+            <PropertyRef Name="lib_user_reg" />
+            <PropertyRef Name="lib_fec_reg" />
+            <PropertyRef Name="lib_state" />
+            <PropertyRef Name="edi_nom" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="lib_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_id" Type="Int32" />
+          <Property Name="gen_id" Type="Int32" />
+          <Property Name="lib_edi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lib_fec_pub" Type="Int32" />
+          <Property Name="lib_disp_stock" Type="Int32" Nullable="false" />
+          <Property Name="edi_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_user_reg" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_fec_reg" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lib_user_mod" Type="String" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="lib_fec_mod" Type="DateTime" Precision="3" />
+          <Property Name="lib_state" Type="Boolean" Nullable="false" />
+          <Property Name="gen_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="edi_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_ape" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="Expr2" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_VistaLibrosRentados">
+          <Key>
+            <PropertyRef Name="rent_id" />
+            <PropertyRef Name="rent_fec" />
+            <PropertyRef Name="ejem_id" />
+            <PropertyRef Name="lib_id" />
+            <PropertyRef Name="lib_nom" />
+            <PropertyRef Name="edi_id" />
+            <PropertyRef Name="edi_nom" />
+          </Key>
+          <Property Name="rent_id" Type="Int32" Nullable="false" />
+          <Property Name="rent_fec" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="rent_fec_dev" Type="DateTime" Precision="0" />
+          <Property Name="ejem_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="aut_id" Type="Int32" />
+          <Property Name="aut_nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="aut_ape" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="gen_id" Type="Int32" />
+          <Property Name="gen_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="edi_id" Type="Int32" Nullable="false" />
+          <Property Name="edi_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ejemplar_Almacen">
+          <End Role="tb_Almacen" Type="Self.tb_Almacen" Multiplicity="0..1" />
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Almacen">
+              <PropertyRef Name="alm_id" />
+            </Principal>
+            <Dependent Role="tb_Ejemplar">
+              <PropertyRef Name="alm_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Autor">
+          <End Role="tb_Autor" Type="Self.tb_Autor" Multiplicity="0..1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Autor">
+              <PropertyRef Name="aut_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="aut_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Renta_Cliente">
+          <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="1" />
+          <End Role="tb_Renta" Type="Self.tb_Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Cliente">
+              <PropertyRef Name="cli_id" />
+            </Principal>
+            <Dependent Role="tb_Renta">
+              <PropertyRef Name="cli_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Cliente_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Cliente">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Editorial">
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Editorial">
+              <PropertyRef Name="edi_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="edi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_Editorial">
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="1" />
+          <End Role="tb_Requerimiento" Type="Self.tb_Requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Editorial">
+              <PropertyRef Name="edi_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento">
+              <PropertyRef Name="edi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Editorial_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Editorial" Type="Self.tb_Editorial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Editorial">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ejemplar_Libro">
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="1" />
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Libro">
+              <PropertyRef Name="lib_id" />
+            </Principal>
+            <Dependent Role="tb_Ejemplar">
+              <PropertyRef Name="lib_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Renta_Ejemplar">
+          <End Role="tb_Ejemplar" Type="Self.tb_Ejemplar" Multiplicity="1" />
+          <End Role="tb_Renta" Type="Self.tb_Renta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ejemplar">
+              <PropertyRef Name="ejem_id" />
+            </Principal>
+            <Dependent Role="tb_Renta">
+              <PropertyRef Name="ejem_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Libro_Genero">
+          <End Role="tb_Genero" Type="Self.tb_Genero" Multiplicity="0..1" />
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Genero">
+              <PropertyRef Name="gen_id" />
+            </Principal>
+            <Dependent Role="tb_Libro">
+              <PropertyRef Name="gen_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_detalle_Libro">
+          <End Role="tb_Libro" Type="Self.tb_Libro" Multiplicity="1" />
+          <End Role="tb_Requerimiento_detalle" Type="Self.tb_Requerimiento_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Libro">
+              <PropertyRef Name="lib_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento_detalle">
+              <PropertyRef Name="lib_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Personal_tb_Ubigeo">
+          <End Role="tb_Ubigeo" Type="Self.tb_Ubigeo" Multiplicity="0..1" />
+          <End Role="tb_Personal" Type="Self.tb_Personal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Ubigeo">
+              <PropertyRef Name="ubg_id" />
+            </Principal>
+            <Dependent Role="tb_Personal">
+              <PropertyRef Name="ubg_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requerimiento_detalle_Requerimiento">
+          <End Role="tb_Requerimiento" Type="Self.tb_Requerimiento" Multiplicity="1" />
+          <End Role="tb_Requerimiento_detalle" Type="Self.tb_Requerimiento_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Requerimiento">
+              <PropertyRef Name="req_id" />
+            </Principal>
+            <Dependent Role="tb_Requerimiento_detalle">
+              <PropertyRef Name="req_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbLibreriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Almacen" EntityType="Self.tb_Almacen" />
+          <EntitySet Name="tb_Autor" EntityType="Self.tb_Autor" />
+          <EntitySet Name="tb_Cliente" EntityType="Self.tb_Cliente" />
+          <EntitySet Name="tb_Editorial" EntityType="Self.tb_Editorial" />
+          <EntitySet Name="tb_Ejemplar" EntityType="Self.tb_Ejemplar" />
+          <EntitySet Name="tb_Genero" EntityType="Self.tb_Genero" />
+          <EntitySet Name="tb_Libro" EntityType="Self.tb_Libro" />
+          <EntitySet Name="tb_Personal" EntityType="Self.tb_Personal" />
+          <EntitySet Name="tb_Renta" EntityType="Self.tb_Renta" />
+          <EntitySet Name="tb_Requerimiento" EntityType="Self.tb_Requerimiento" />
+          <EntitySet Name="tb_Requerimiento_detalle" EntityType="Self.tb_Requerimiento_detalle" />
+          <EntitySet Name="tb_Ubigeo" EntityType="Self.tb_Ubigeo" />
+          <EntitySet Name="vw_VistaAutor" EntityType="Self.vw_VistaAutor" />
+          <EntitySet Name="vw_VistaClientes" EntityType="Self.vw_VistaClientes" />
+          <EntitySet Name="vw_VistaLibro" EntityType="Self.vw_VistaLibro" />
+          <EntitySet Name="vw_VistaLibrosRentados" EntityType="Self.vw_VistaLibrosRentados" />
+          <AssociationSet Name="FK_Ejemplar_Almacen" Association="Self.FK_Ejemplar_Almacen">
+            <End Role="tb_Almacen" EntitySet="tb_Almacen" />
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Autor" Association="Self.FK_Libro_Autor">
+            <End Role="tb_Autor" EntitySet="tb_Autor" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Renta_Cliente" Association="Self.FK_Renta_Cliente">
+            <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+            <End Role="tb_Renta" EntitySet="tb_Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Cliente_tb_Ubigeo" Association="Self.FK_tb_Cliente_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Editorial" Association="Self.FK_Libro_Editorial">
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_Editorial" Association="Self.FK_Requerimiento_Editorial">
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+            <End Role="tb_Requerimiento" EntitySet="tb_Requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Editorial_tb_Ubigeo" Association="Self.FK_tb_Editorial_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Editorial" EntitySet="tb_Editorial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ejemplar_Libro" Association="Self.FK_Ejemplar_Libro">
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Renta_Ejemplar" Association="Self.FK_Renta_Ejemplar">
+            <End Role="tb_Ejemplar" EntitySet="tb_Ejemplar" />
+            <End Role="tb_Renta" EntitySet="tb_Renta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Libro_Genero" Association="Self.FK_Libro_Genero">
+            <End Role="tb_Genero" EntitySet="tb_Genero" />
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_detalle_Libro" Association="Self.FK_Requerimiento_detalle_Libro">
+            <End Role="tb_Libro" EntitySet="tb_Libro" />
+            <End Role="tb_Requerimiento_detalle" EntitySet="tb_Requerimiento_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Personal_tb_Ubigeo" Association="Self.FK_tb_Personal_tb_Ubigeo">
+            <End Role="tb_Ubigeo" EntitySet="tb_Ubigeo" />
+            <End Role="tb_Personal" EntitySet="tb_Personal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requerimiento_detalle_Requerimiento" Association="Self.FK_Requerimiento_detalle_Requerimiento">
+            <End Role="tb_Requerimiento" EntitySet="tb_Requerimiento" />
+            <End Role="tb_Requerimiento_detalle" EntitySet="tb_Requerimiento_detalle" />
+          </AssociationSet>
+          <FunctionImport Name="usp_ConsultarAutor" ReturnType="Collection(dbLibreriaModel.usp_ConsultarAutor_Result)">
+          <Parameter Name="aut_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarCliente" ReturnType="Collection(dbLibreriaModel.usp_ConsultarCliente_Result)">
+          <Parameter Name="cli_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ConsultarLibro" ReturnType="Collection(dbLibreriaModel.usp_ConsultarLibro_Result)">
+          <Parameter Name="lib_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EditarAutor">
+            <Parameter Name="aut_id" Mode="In" Type="Int32" />
+            <Parameter Name="aut_nom" Mode="In" Type="String" />
+            <Parameter Name="aut_ape" Mode="In" Type="String" />
+            <Parameter Name="aut_pais" Mode="In" Type="String" />
+            <Parameter Name="aut_foto" Mode="In" Type="Binary" />
+            <Parameter Name="aut_user_mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EditarCliente">
+            <Parameter Name="cli_id" Mode="In" Type="Int32" />
+            <Parameter Name="cli_nom" Mode="In" Type="String" />
+            <Parameter Name="cli_ape" Mode="In" Type="String" />
+            <Parameter Name="cli_dir" Mode="In" Type="String" />
+            <Parameter Name="cli_tel" Mode="In" Type="String" />
+            <Parameter Name="cli_mail" Mode="In" Type="String" />
+            <Parameter Name="cli_dni" Mode="In" Type="String" />
+            <Parameter Name="ubg_id" Mode="In" Type="String" />
+            <Parameter Name="cli_fec_nac" Mode="In" Type="DateTime" />
+            <Parameter Name="cli_sex" Mode="In" Type="String" />
+            <Parameter Name="cli_foto" Mode="In" Type="Binary" />
+            <Parameter Name="cli_user_mod" Mode="In" Type="String" />
+            <Parameter Name="cli_memb_tipo" Mode="In" Type="Int32" />
+            <Parameter Name="cli_memb_cad" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_EditarLibro">
+            <Parameter Name="lib_id" Mode="In" Type="Int32" />
+            <Parameter Name="lib_nom" Mode="In" Type="String" />
+            <Parameter Name="aut_id" Mode="In" Type="Int32" />
+            <Parameter Name="gen_id" Mode="In" Type="Int32" />
+            <Parameter Name="lib_edi" Mode="In" Type="String" />
+            <Parameter Name="lib_fec_pub" Mode="In" Type="Int32" />
+            <Parameter Name="lib_disp_stock" Mode="In" Type="Int32" />
+            <Parameter Name="edi_id" Mode="In" Type="Int32" />
+            <Parameter Name="lib_user_mod" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_FiltrarLibrosxPeriodo" ReturnType="Collection(dbLibreriaModel.usp_FiltrarLibrosxPeriodo_Result)">
+            <Parameter Name="gen_id" Mode="In" Type="Int32" />
+            <Parameter Name="aut_id" Mode="In" Type="Int32" />
+            <Parameter Name="fecIn" Mode="In" Type="DateTime" />
+            <Parameter Name="fecEn" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertaLibro">
+            <Parameter Name="lib_nom" Mode="In" Type="String" />
+            <Parameter Name="aut_id" Mode="In" Type="Int32" />
+            <Parameter Name="gen_id" Mode="In" Type="Int32" />
+            <Parameter Name="lib_edi" Mode="In" Type="String" />
+            <Parameter Name="lib_fec_pub" Mode="In" Type="Int32" />
+            <Parameter Name="lib_disp_stock" Mode="In" Type="Int32" />
+            <Parameter Name="edi_id" Mode="In" Type="Int32" />
+            <Parameter Name="lib_user_reg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarAutor">
+            <Parameter Name="aut_nom" Mode="In" Type="String" />
+            <Parameter Name="aut_ape" Mode="In" Type="String" />
+            <Parameter Name="aut_pais" Mode="In" Type="String" />
+            <Parameter Name="aut_foto" Mode="In" Type="Binary" />
+            <Parameter Name="aut_user_reg" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_InsertarCliente">
+            <Parameter Name="cli_nom" Mode="In" Type="String" />
+            <Parameter Name="cli_ape" Mode="In" Type="String" />
+            <Parameter Name="cli_dir" Mode="In" Type="String" />
+            <Parameter Name="cli_tel" Mode="In" Type="String" />
+            <Parameter Name="cli_mail" Mode="In" Type="String" />
+            <Parameter Name="cli_dni" Mode="In" Type="String" />
+            <Parameter Name="ubg_id" Mode="In" Type="String" />
+            <Parameter Name="cli_fec_nac" Mode="In" Type="DateTime" />
+            <Parameter Name="cli_sex" Mode="In" Type="String" />
+            <Parameter Name="cli_foto" Mode="In" Type="Binary" />
+            <Parameter Name="cli_user_reg" Mode="In" Type="String" />
+            <Parameter Name="cli_memb_tipo" Mode="In" Type="Int32" />
+            <Parameter Name="cli_memb_cad" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarAutor" ReturnType="Collection(dbLibreriaModel.usp_ListarAutor_Result)" />
+          <FunctionImport Name="usp_ListarAutorCompuesto" ReturnType="Collection(dbLibreriaModel.usp_ListarAutorCompuesto_Result)" />
+          <FunctionImport Name="usp_ListarCliente" ReturnType="Collection(dbLibreriaModel.usp_ListarCliente_Result)" />
+          <FunctionImport Name="usp_ListarEditorial" ReturnType="Collection(dbLibreriaModel.usp_ListarEditorial_Result)" />
+          <FunctionImport Name="usp_ListarGenero" ReturnType="Collection(dbLibreriaModel.usp_ListarGenero_Result)" />
+          <FunctionImport Name="usp_ListarLibro" ReturnType="Collection(dbLibreriaModel.usp_ListarLibro_Result)" />
+          <FunctionImport Name="usp_Ubigeo_DistritosProvinciaRegion" ReturnType="Collection(dbLibreriaModel.usp_Ubigeo_DistritosProvinciaRegion_Result)">
+            <Parameter Name="IdRegion" Mode="In" Type="String" />
+            <Parameter Name="IdProvincia" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_ProvinciasRegion" ReturnType="Collection(dbLibreriaModel.usp_Ubigeo_ProvinciasRegion_Result)">
+          <Parameter Name="IdRegion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Ubigeo_Region" ReturnType="Collection(dbLibreriaModel.usp_Ubigeo_Region_Result)" />
+          <FunctionImport Name="usp_ValidarUsuario" ReturnType="Collection(dbLibreriaModel.usp_ValidarUsuario_Result)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_RentasMensuales" ReturnType="Collection(dbLibreriaModel.usp_RentasMensuales_Result)" />
+          <FunctionImport Name="usp_RentasxGenero" ReturnType="Collection(dbLibreriaModel.usp_RentasxGenero_Result)" />
+          <FunctionImport Name="usp_FiltrarClientes" ReturnType="Collection(dbLibreriaModel.usp_FiltrarClientes_Result)">
+          <Parameter Name="filtrarPorNulos" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ListarClienteSimple" ReturnType="Collection(dbLibreriaModel.usp_ListarClienteSimple_Result)" />
+        </EntityContainer>
+        <ComplexType Name="usp_ConsultarAutor_Result">
+          <Property Type="Int32" Name="aut_id" Nullable="false" />
+          <Property Type="String" Name="aut_nom" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="aut_ape" Nullable="true" MaxLength="30" />
+          <Property Type="Binary" Name="aut_foto" Nullable="true" />
+          <Property Type="String" Name="aut_pais" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="aut_user_reg" Nullable="false" MaxLength="36" />
+          <Property Type="DateTime" Name="aut_fec_reg" Nullable="false" Precision="23" />
+          <Property Type="String" Name="aut_user_mod" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="aut_fec_mod" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="aut_state" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarCliente_Result">
+          <Property Type="Int32" Name="cli_id" Nullable="false" />
+          <Property Type="String" Name="cli_nom" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="cli_ape" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="cli_dir" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="cli_tel" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="cli_mail" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="cli_dni" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="ubg_id" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="ubg_reg" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ubg_prov" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ubg_dist" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="cli_fec_nac" Nullable="true" />
+          <Property Type="String" Name="cli_sex" Nullable="true" MaxLength="1" />
+          <Property Type="Binary" Name="cli_foto" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="cli_memb_tipo" Nullable="true" />
+          <Property Type="DateTime" Name="cli_memb_cad" Nullable="true" Precision="23" />
+          <Property Type="String" Name="cli_user_reg" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="cli_fec_reg" Nullable="true" Precision="23" />
+          <Property Type="String" Name="cli_user_mod" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="cli_fec_mod" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="cli_state" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ConsultarLibro_Result">
+          <Property Type="Int32" Name="lib_id" Nullable="false" />
+          <Property Type="String" Name="lib_nom" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="aut_id" Nullable="true" />
+          <Property Type="String" Name="aut_nom" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="aut_ape" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="gen_id" Nullable="true" />
+          <Property Type="String" Name="gen_desc" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="lib_edi" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="lib_fec_pub" Nullable="true" />
+          <Property Type="Int32" Name="lib_disp_stock" Nullable="false" />
+          <Property Type="Int32" Name="edi_id" Nullable="false" />
+          <Property Type="String" Name="edi_nom" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="lib_user_reg" Nullable="false" MaxLength="36" />
+          <Property Type="DateTime" Name="lib_fec_reg" Nullable="false" Precision="23" />
+          <Property Type="String" Name="lib_user_mod" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="lib_fec_mod" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="lib_state" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_FiltrarLibrosxPeriodo_Result">
+          <Property Type="Int32" Name="lib_id" Nullable="false" />
+          <Property Type="String" Name="lib_nom" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="gen_desc" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="autor" Nullable="true" MaxLength="47" />
+          <Property Type="Int32" Name="rent_count" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarAutor_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="15" />
+          <Property Type="Binary" Name="Foto" Nullable="true" />
+          <Property Type="String" Name="Pais" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Creado_por" Nullable="false" MaxLength="36" />
+          <Property Type="DateTime" Name="Creado_el" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Modificado_por" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="Modificado_el" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarAutorCompuesto_Result">
+          <Property Type="Int32" Name="aut_id" Nullable="false" />
+          <Property Type="String" Name="aut_nombre" Nullable="true" MaxLength="46" />
+          <Property Type="Binary" Name="aut_foto" Nullable="true" />
+          <Property Type="String" Name="aut_pais" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="aut_user_reg" Nullable="false" MaxLength="36" />
+          <Property Type="DateTime" Name="aut_fec_reg" Nullable="false" Precision="23" />
+          <Property Type="String" Name="aut_user_mod" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="aut_fec_mod" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="aut_state" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarCliente_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="DNI" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="Ubigeo" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Region" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Distrito" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="Fecha_de_nacimiento" Nullable="true" />
+          <Property Type="String" Name="Sexo" Nullable="true" MaxLength="1" />
+          <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="Tipo_Membresia" Nullable="true" />
+          <Property Type="DateTime" Name="Caducidad" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Creado_por" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="Creado_el" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Modificado_por" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="Modificado_el" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Estado" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarEditorial_Result">
+          <Property Type="Int32" Name="edi_id" Nullable="false" />
+          <Property Type="String" Name="edi_nom" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarGenero_Result">
+          <Property Type="Int32" Name="gen_id" Nullable="false" />
+          <Property Type="String" Name="gen_desc" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarLibro_Result">
+          <Property Type="Int32" Name="lib_id" Nullable="false" />
+          <Property Type="String" Name="Libro" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Autor" Nullable="true" MaxLength="46" />
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Edicion" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Ano_de_publicacion" Nullable="true" />
+          <Property Type="Int32" Name="Stock" Nullable="false" />
+          <Property Type="String" Name="Editorial" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Creado_por" Nullable="false" MaxLength="36" />
+          <Property Type="DateTime" Name="Creado_el" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Modificado_por" Nullable="true" MaxLength="36" />
+          <Property Type="DateTime" Name="Modificado_el" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_DistritosProvinciaRegion_Result">
+          <Property Type="String" Name="ubg_dist_id" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="ubg_dist" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_ProvinciasRegion_Result">
+          <Property Type="String" Name="ubg_prov_id" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="ubg_prov" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_Ubigeo_Region_Result">
+          <Property Type="String" Name="ubg_reg_id" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="ubg_reg" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="usp_ValidarUsuario_Result">
+          <Property Type="Int32" Name="per_id" Nullable="false" />
+          <Property Type="String" Name="per_mail" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="per_pass" Nullable="false" MaxLength="12" />
+        </ComplexType>
+        <ComplexType Name="usp_RentasMensuales_Result">
+          <Property Type="Int32" Name="Mes" Nullable="true" />
+          <Property Type="Int32" Name="Rentas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_RentasxGenero_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Porcentaje" Nullable="true" Precision="25" Scale="13" />
+        </ComplexType>
+        <ComplexType Name="usp_FiltrarClientes_Result">
+          <Property Type="Int32" Name="cli_id" Nullable="false" />
+          <Property Type="String" Name="cliente" Nullable="true" MaxLength="37" />
+          <Property Type="String" Name="cli_tel" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="cli_mail" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="cli_memb_tipo" Nullable="true" />
+          <Property Type="DateTime" Name="cli_memb_cad" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="usp_ListarClienteSimple_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Tipo_Membresia" Nullable="true" />
+          <Property Type="DateTime" Name="Caducidad" Nullable="true" Precision="23" />
+          <Property Type="String" Name="cliente" Nullable="true" MaxLength="37" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbLibreriaModelStoreContainer" CdmEntityContainer="dbLibreriaEntities">
+          <EntitySetMapping Name="tb_Almacen">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Almacen">
+              <MappingFragment StoreEntitySet="tb_Almacen">
+                <ScalarProperty Name="alm_id" ColumnName="alm_id" />
+                <ScalarProperty Name="alm_sec" ColumnName="alm_sec" />
+                <ScalarProperty Name="alm_desc" ColumnName="alm_desc" />
+                <ScalarProperty Name="alm_user_reg" ColumnName="alm_user_reg" />
+                <ScalarProperty Name="alm_fec_reg" ColumnName="alm_fec_reg" />
+                <ScalarProperty Name="alm_user_mod" ColumnName="alm_user_mod" />
+                <ScalarProperty Name="alm_fec_mod" ColumnName="alm_fec_mod" />
+                <ScalarProperty Name="alm_state" ColumnName="alm_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Autor">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Autor">
+              <MappingFragment StoreEntitySet="tb_Autor">
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="aut_foto" ColumnName="aut_foto" />
+                <ScalarProperty Name="aut_pais" ColumnName="aut_pais" />
+                <ScalarProperty Name="aut_user_reg" ColumnName="aut_user_reg" />
+                <ScalarProperty Name="aut_fec_reg" ColumnName="aut_fec_reg" />
+                <ScalarProperty Name="aut_user_mod" ColumnName="aut_user_mod" />
+                <ScalarProperty Name="aut_fec_mod" ColumnName="aut_fec_mod" />
+                <ScalarProperty Name="aut_state" ColumnName="aut_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Cliente">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Cliente">
+              <MappingFragment StoreEntitySet="tb_Cliente">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="cli_nom" ColumnName="cli_nom" />
+                <ScalarProperty Name="cli_ape" ColumnName="cli_ape" />
+                <ScalarProperty Name="cli_dir" ColumnName="cli_dir" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="cli_mail" ColumnName="cli_mail" />
+                <ScalarProperty Name="cli_dni" ColumnName="cli_dni" />
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="cli_fec_nac" ColumnName="cli_fec_nac" />
+                <ScalarProperty Name="cli_sex" ColumnName="cli_sex" />
+                <ScalarProperty Name="cli_foto" ColumnName="cli_foto" />
+                <ScalarProperty Name="cli_memb_tipo" ColumnName="cli_memb_tipo" />
+                <ScalarProperty Name="cli_memb_cad" ColumnName="cli_memb_cad" />
+                <ScalarProperty Name="cli_user_reg" ColumnName="cli_user_reg" />
+                <ScalarProperty Name="cli_fec_reg" ColumnName="cli_fec_reg" />
+                <ScalarProperty Name="cli_user_mod" ColumnName="cli_user_mod" />
+                <ScalarProperty Name="cli_fec_mod" ColumnName="cli_fec_mod" />
+                <ScalarProperty Name="cli_state" ColumnName="cli_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Editorial">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Editorial">
+              <MappingFragment StoreEntitySet="tb_Editorial">
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="edi_nom" ColumnName="edi_nom" />
+                <ScalarProperty Name="edi_dir" ColumnName="edi_dir" />
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="edi_tel" ColumnName="edi_tel" />
+                <ScalarProperty Name="edi_mail" ColumnName="edi_mail" />
+                <ScalarProperty Name="edi_user_reg" ColumnName="edi_user_reg" />
+                <ScalarProperty Name="edi_fec_reg" ColumnName="edi_fec_reg" />
+                <ScalarProperty Name="edi_user_mod" ColumnName="edi_user_mod" />
+                <ScalarProperty Name="edi_fec_mod" ColumnName="edi_fec_mod" />
+                <ScalarProperty Name="edi_state" ColumnName="edi_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Ejemplar">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Ejemplar">
+              <MappingFragment StoreEntitySet="tb_Ejemplar">
+                <ScalarProperty Name="ejem_id" ColumnName="ejem_id" />
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="ejem_disp" ColumnName="ejem_disp" />
+                <ScalarProperty Name="ejem_condicion" ColumnName="ejem_condicion" />
+                <ScalarProperty Name="alm_id" ColumnName="alm_id" />
+                <ScalarProperty Name="ejem_user_reg" ColumnName="ejem_user_reg" />
+                <ScalarProperty Name="ejem_fec_reg" ColumnName="ejem_fec_reg" />
+                <ScalarProperty Name="ejem_user_mod" ColumnName="ejem_user_mod" />
+                <ScalarProperty Name="ejem_fec_mod" ColumnName="ejem_fec_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Genero">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Genero">
+              <MappingFragment StoreEntitySet="tb_Genero">
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+                <ScalarProperty Name="gen_user_reg" ColumnName="gen_user_reg" />
+                <ScalarProperty Name="gen_fec_reg" ColumnName="gen_fec_reg" />
+                <ScalarProperty Name="gen_user_mod" ColumnName="gen_user_mod" />
+                <ScalarProperty Name="gen_fec_mod" ColumnName="gen_fec_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Libro">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Libro">
+              <MappingFragment StoreEntitySet="tb_Libro">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_nom" ColumnName="lib_nom" />
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="lib_edi" ColumnName="lib_edi" />
+                <ScalarProperty Name="lib_fec_pub" ColumnName="lib_fec_pub" />
+                <ScalarProperty Name="lib_disp_stock" ColumnName="lib_disp_stock" />
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="lib_user_reg" ColumnName="lib_user_reg" />
+                <ScalarProperty Name="lib_fec_reg" ColumnName="lib_fec_reg" />
+                <ScalarProperty Name="lib_user_mod" ColumnName="lib_user_mod" />
+                <ScalarProperty Name="lib_fec_mod" ColumnName="lib_fec_mod" />
+                <ScalarProperty Name="lib_state" ColumnName="lib_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Personal">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Personal">
+              <MappingFragment StoreEntitySet="tb_Personal">
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+                <ScalarProperty Name="per_nom" ColumnName="per_nom" />
+                <ScalarProperty Name="per_ape_pat" ColumnName="per_ape_pat" />
+                <ScalarProperty Name="per_ape_mat" ColumnName="per_ape_mat" />
+                <ScalarProperty Name="per_dir" ColumnName="per_dir" />
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="per_tel" ColumnName="per_tel" />
+                <ScalarProperty Name="per_dni" ColumnName="per_dni" />
+                <ScalarProperty Name="per_mail" ColumnName="per_mail" />
+                <ScalarProperty Name="per_pass" ColumnName="per_pass" />
+                <ScalarProperty Name="per_foto" ColumnName="per_foto" />
+                <ScalarProperty Name="per_fec_ing" ColumnName="per_fec_ing" />
+                <ScalarProperty Name="per_user_reg" ColumnName="per_user_reg" />
+                <ScalarProperty Name="per_fec_reg" ColumnName="per_fec_reg" />
+                <ScalarProperty Name="per_user_mod" ColumnName="per_user_mod" />
+                <ScalarProperty Name="per_fec_mod" ColumnName="per_fec_mod" />
+                <ScalarProperty Name="per_state" ColumnName="per_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Renta">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Renta">
+              <MappingFragment StoreEntitySet="tb_Renta">
+                <ScalarProperty Name="rent_id" ColumnName="rent_id" />
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="ejem_id" ColumnName="ejem_id" />
+                <ScalarProperty Name="rent_fec" ColumnName="rent_fec" />
+                <ScalarProperty Name="rent_fec_dev" ColumnName="rent_fec_dev" />
+                <ScalarProperty Name="rent_obs" ColumnName="rent_obs" />
+                <ScalarProperty Name="rent_user_reg" ColumnName="rent_user_reg" />
+                <ScalarProperty Name="rent_fec_reg" ColumnName="rent_fec_reg" />
+                <ScalarProperty Name="rent_user_mod" ColumnName="rent_user_mod" />
+                <ScalarProperty Name="rent_fec_mod" ColumnName="rent_fec_mod" />
+                <ScalarProperty Name="rent_state" ColumnName="rent_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Requerimiento">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Requerimiento">
+              <MappingFragment StoreEntitySet="tb_Requerimiento">
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="req_fec_emi" ColumnName="req_fec_emi" />
+                <ScalarProperty Name="req_user_reg" ColumnName="req_user_reg" />
+                <ScalarProperty Name="req_fec_reg" ColumnName="req_fec_reg" />
+                <ScalarProperty Name="req_user_mod" ColumnName="req_user_mod" />
+                <ScalarProperty Name="req_fec_mod" ColumnName="req_fec_mod" />
+                <ScalarProperty Name="req_state" ColumnName="req_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Requerimiento_detalle">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Requerimiento_detalle">
+              <MappingFragment StoreEntitySet="tb_Requerimiento_detalle">
+                <ScalarProperty Name="req_id" ColumnName="req_id" />
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_cant_sol" ColumnName="lib_cant_sol" />
+                <ScalarProperty Name="req_det_user_reg" ColumnName="req_det_user_reg" />
+                <ScalarProperty Name="req_det_fec_reg" ColumnName="req_det_fec_reg" />
+                <ScalarProperty Name="req_det_user_mod" ColumnName="req_det_user_mod" />
+                <ScalarProperty Name="req_det_fec_mod" ColumnName="req_det_fec_mod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Ubigeo">
+            <EntityTypeMapping TypeName="dbLibreriaModel.tb_Ubigeo">
+              <MappingFragment StoreEntitySet="tb_Ubigeo">
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="ubg_reg_id" ColumnName="ubg_reg_id" />
+                <ScalarProperty Name="ubg_prov_id" ColumnName="ubg_prov_id" />
+                <ScalarProperty Name="ubg_dist_id" ColumnName="ubg_dist_id" />
+                <ScalarProperty Name="ubg_reg" ColumnName="ubg_reg" />
+                <ScalarProperty Name="ubg_prov" ColumnName="ubg_prov" />
+                <ScalarProperty Name="ubg_dist" ColumnName="ubg_dist" />
+                <ScalarProperty Name="ubg_user_reg" ColumnName="ubg_user_reg" />
+                <ScalarProperty Name="ubg_fec_reg" ColumnName="ubg_fec_reg" />
+                <ScalarProperty Name="ubg_user_mod" ColumnName="ubg_user_mod" />
+                <ScalarProperty Name="ubg_fec_mod" ColumnName="ubg_fec_mod" />
+                <ScalarProperty Name="ubg_state" ColumnName="ubg_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_VistaAutor">
+            <EntityTypeMapping TypeName="dbLibreriaModel.vw_VistaAutor">
+              <MappingFragment StoreEntitySet="vw_VistaAutor">
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="aut_foto" ColumnName="aut_foto" />
+                <ScalarProperty Name="aut_pais" ColumnName="aut_pais" />
+                <ScalarProperty Name="aut_user_reg" ColumnName="aut_user_reg" />
+                <ScalarProperty Name="aut_fec_reg" ColumnName="aut_fec_reg" />
+                <ScalarProperty Name="aut_user_mod" ColumnName="aut_user_mod" />
+                <ScalarProperty Name="aut_fec_mod" ColumnName="aut_fec_mod" />
+                <ScalarProperty Name="aut_state" ColumnName="aut_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_VistaClientes">
+            <EntityTypeMapping TypeName="dbLibreriaModel.vw_VistaClientes">
+              <MappingFragment StoreEntitySet="vw_VistaClientes">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="cli_nom" ColumnName="cli_nom" />
+                <ScalarProperty Name="cli_ape" ColumnName="cli_ape" />
+                <ScalarProperty Name="cli_dir" ColumnName="cli_dir" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="cli_mail" ColumnName="cli_mail" />
+                <ScalarProperty Name="cli_dni" ColumnName="cli_dni" />
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="cli_fec_nac" ColumnName="cli_fec_nac" />
+                <ScalarProperty Name="cli_sex" ColumnName="cli_sex" />
+                <ScalarProperty Name="cli_foto" ColumnName="cli_foto" />
+                <ScalarProperty Name="cli_memb_tipo" ColumnName="cli_memb_tipo" />
+                <ScalarProperty Name="cli_memb_cad" ColumnName="cli_memb_cad" />
+                <ScalarProperty Name="cli_user_reg" ColumnName="cli_user_reg" />
+                <ScalarProperty Name="cli_fec_reg" ColumnName="cli_fec_reg" />
+                <ScalarProperty Name="cli_user_mod" ColumnName="cli_user_mod" />
+                <ScalarProperty Name="cli_fec_mod" ColumnName="cli_fec_mod" />
+                <ScalarProperty Name="cli_state" ColumnName="cli_state" />
+                <ScalarProperty Name="ubg_reg" ColumnName="ubg_reg" />
+                <ScalarProperty Name="ubg_prov" ColumnName="ubg_prov" />
+                <ScalarProperty Name="ubg_dist" ColumnName="ubg_dist" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_VistaLibro">
+            <EntityTypeMapping TypeName="dbLibreriaModel.vw_VistaLibro">
+              <MappingFragment StoreEntitySet="vw_VistaLibro">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_nom" ColumnName="lib_nom" />
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="lib_edi" ColumnName="lib_edi" />
+                <ScalarProperty Name="lib_fec_pub" ColumnName="lib_fec_pub" />
+                <ScalarProperty Name="lib_disp_stock" ColumnName="lib_disp_stock" />
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="lib_user_reg" ColumnName="lib_user_reg" />
+                <ScalarProperty Name="lib_fec_reg" ColumnName="lib_fec_reg" />
+                <ScalarProperty Name="lib_user_mod" ColumnName="lib_user_mod" />
+                <ScalarProperty Name="lib_fec_mod" ColumnName="lib_fec_mod" />
+                <ScalarProperty Name="lib_state" ColumnName="lib_state" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+                <ScalarProperty Name="edi_nom" ColumnName="edi_nom" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_VistaLibrosRentados">
+            <EntityTypeMapping TypeName="dbLibreriaModel.vw_VistaLibrosRentados">
+              <MappingFragment StoreEntitySet="vw_VistaLibrosRentados">
+                <ScalarProperty Name="rent_id" ColumnName="rent_id" />
+                <ScalarProperty Name="rent_fec" ColumnName="rent_fec" />
+                <ScalarProperty Name="rent_fec_dev" ColumnName="rent_fec_dev" />
+                <ScalarProperty Name="ejem_id" ColumnName="ejem_id" />
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_nom" ColumnName="lib_nom" />
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="edi_nom" ColumnName="edi_nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarAutor" FunctionName="dbLibreriaModel.Store.usp_ConsultarAutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ConsultarAutor_Result">
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="aut_foto" ColumnName="aut_foto" />
+                <ScalarProperty Name="aut_pais" ColumnName="aut_pais" />
+                <ScalarProperty Name="aut_user_reg" ColumnName="aut_user_reg" />
+                <ScalarProperty Name="aut_fec_reg" ColumnName="aut_fec_reg" />
+                <ScalarProperty Name="aut_user_mod" ColumnName="aut_user_mod" />
+                <ScalarProperty Name="aut_fec_mod" ColumnName="aut_fec_mod" />
+                <ScalarProperty Name="aut_state" ColumnName="aut_state" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarCliente" FunctionName="dbLibreriaModel.Store.usp_ConsultarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ConsultarCliente_Result">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="cli_nom" ColumnName="cli_nom" />
+                <ScalarProperty Name="cli_ape" ColumnName="cli_ape" />
+                <ScalarProperty Name="cli_dir" ColumnName="cli_dir" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="cli_mail" ColumnName="cli_mail" />
+                <ScalarProperty Name="cli_dni" ColumnName="cli_dni" />
+                <ScalarProperty Name="ubg_id" ColumnName="ubg_id" />
+                <ScalarProperty Name="ubg_reg" ColumnName="ubg_reg" />
+                <ScalarProperty Name="ubg_prov" ColumnName="ubg_prov" />
+                <ScalarProperty Name="ubg_dist" ColumnName="ubg_dist" />
+                <ScalarProperty Name="cli_fec_nac" ColumnName="cli_fec_nac" />
+                <ScalarProperty Name="cli_sex" ColumnName="cli_sex" />
+                <ScalarProperty Name="cli_foto" ColumnName="cli_foto" />
+                <ScalarProperty Name="cli_memb_tipo" ColumnName="cli_memb_tipo" />
+                <ScalarProperty Name="cli_memb_cad" ColumnName="cli_memb_cad" />
+                <ScalarProperty Name="cli_user_reg" ColumnName="cli_user_reg" />
+                <ScalarProperty Name="cli_fec_reg" ColumnName="cli_fec_reg" />
+                <ScalarProperty Name="cli_user_mod" ColumnName="cli_user_mod" />
+                <ScalarProperty Name="cli_fec_mod" ColumnName="cli_fec_mod" />
+                <ScalarProperty Name="cli_state" ColumnName="cli_state" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ConsultarLibro" FunctionName="dbLibreriaModel.Store.usp_ConsultarLibro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ConsultarLibro_Result">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_nom" ColumnName="lib_nom" />
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nom" ColumnName="aut_nom" />
+                <ScalarProperty Name="aut_ape" ColumnName="aut_ape" />
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+                <ScalarProperty Name="lib_edi" ColumnName="lib_edi" />
+                <ScalarProperty Name="lib_fec_pub" ColumnName="lib_fec_pub" />
+                <ScalarProperty Name="lib_disp_stock" ColumnName="lib_disp_stock" />
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="edi_nom" ColumnName="edi_nom" />
+                <ScalarProperty Name="lib_user_reg" ColumnName="lib_user_reg" />
+                <ScalarProperty Name="lib_fec_reg" ColumnName="lib_fec_reg" />
+                <ScalarProperty Name="lib_user_mod" ColumnName="lib_user_mod" />
+                <ScalarProperty Name="lib_fec_mod" ColumnName="lib_fec_mod" />
+                <ScalarProperty Name="lib_state" ColumnName="lib_state" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_EditarAutor" FunctionName="dbLibreriaModel.Store.usp_EditarAutor" />
+          <FunctionImportMapping FunctionImportName="usp_EditarCliente" FunctionName="dbLibreriaModel.Store.usp_EditarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_EditarLibro" FunctionName="dbLibreriaModel.Store.usp_EditarLibro" />
+          <FunctionImportMapping FunctionImportName="usp_FiltrarLibrosxPeriodo" FunctionName="dbLibreriaModel.Store.usp_FiltrarLibrosxPeriodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_FiltrarLibrosxPeriodo_Result">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="lib_nom" ColumnName="lib_nom" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+                <ScalarProperty Name="autor" ColumnName="autor" />
+                <ScalarProperty Name="rent_count" ColumnName="rent_count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_InsertaLibro" FunctionName="dbLibreriaModel.Store.usp_InsertaLibro" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarAutor" FunctionName="dbLibreriaModel.Store.usp_InsertarAutor" />
+          <FunctionImportMapping FunctionImportName="usp_InsertarCliente" FunctionName="dbLibreriaModel.Store.usp_InsertarCliente" />
+          <FunctionImportMapping FunctionImportName="usp_ListarAutor" FunctionName="dbLibreriaModel.Store.usp_ListarAutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarAutor_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Creado_por" ColumnName="Creado_por" />
+                <ScalarProperty Name="Creado_el" ColumnName="Creado_el" />
+                <ScalarProperty Name="Modificado_por" ColumnName="Modificado_por" />
+                <ScalarProperty Name="Modificado_el" ColumnName="Modificado_el" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarAutorCompuesto" FunctionName="dbLibreriaModel.Store.usp_ListarAutorCompuesto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarAutorCompuesto_Result">
+                <ScalarProperty Name="aut_id" ColumnName="aut_id" />
+                <ScalarProperty Name="aut_nombre" ColumnName="aut_nombre" />
+                <ScalarProperty Name="aut_foto" ColumnName="aut_foto" />
+                <ScalarProperty Name="aut_pais" ColumnName="aut_pais" />
+                <ScalarProperty Name="aut_user_reg" ColumnName="aut_user_reg" />
+                <ScalarProperty Name="aut_fec_reg" ColumnName="aut_fec_reg" />
+                <ScalarProperty Name="aut_user_mod" ColumnName="aut_user_mod" />
+                <ScalarProperty Name="aut_fec_mod" ColumnName="aut_fec_mod" />
+                <ScalarProperty Name="aut_state" ColumnName="aut_state" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarCliente" FunctionName="dbLibreriaModel.Store.usp_ListarCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarCliente_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Ubigeo" ColumnName="Ubigeo" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+                <ScalarProperty Name="Fecha_de_nacimiento" ColumnName="Fecha_de_nacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Tipo_Membresia" ColumnName="Tipo_Membresia" />
+                <ScalarProperty Name="Caducidad" ColumnName="Caducidad" />
+                <ScalarProperty Name="Creado_por" ColumnName="Creado_por" />
+                <ScalarProperty Name="Creado_el" ColumnName="Creado_el" />
+                <ScalarProperty Name="Modificado_por" ColumnName="Modificado_por" />
+                <ScalarProperty Name="Modificado_el" ColumnName="Modificado_el" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarEditorial" FunctionName="dbLibreriaModel.Store.usp_ListarEditorial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarEditorial_Result">
+                <ScalarProperty Name="edi_id" ColumnName="edi_id" />
+                <ScalarProperty Name="edi_nom" ColumnName="edi_nom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarGenero" FunctionName="dbLibreriaModel.Store.usp_ListarGenero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarGenero_Result">
+                <ScalarProperty Name="gen_id" ColumnName="gen_id" />
+                <ScalarProperty Name="gen_desc" ColumnName="gen_desc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarLibro" FunctionName="dbLibreriaModel.Store.usp_ListarLibro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarLibro_Result">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="Libro" ColumnName="Libro" />
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Edicion" ColumnName="Edicion" />
+                <ScalarProperty Name="Ano_de_publicacion" ColumnName="Ano_de_publicacion" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Editorial" ColumnName="Editorial" />
+                <ScalarProperty Name="Creado_por" ColumnName="Creado_por" />
+                <ScalarProperty Name="Creado_el" ColumnName="Creado_el" />
+                <ScalarProperty Name="Modificado_por" ColumnName="Modificado_por" />
+                <ScalarProperty Name="Modificado_el" ColumnName="Modificado_el" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_DistritosProvinciaRegion" FunctionName="dbLibreriaModel.Store.usp_Ubigeo_DistritosProvinciaRegion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_Ubigeo_DistritosProvinciaRegion_Result">
+                <ScalarProperty Name="ubg_dist_id" ColumnName="ubg_dist_id" />
+                <ScalarProperty Name="ubg_dist" ColumnName="ubg_dist" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_ProvinciasRegion" FunctionName="dbLibreriaModel.Store.usp_Ubigeo_ProvinciasRegion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_Ubigeo_ProvinciasRegion_Result">
+                <ScalarProperty Name="ubg_prov_id" ColumnName="ubg_prov_id" />
+                <ScalarProperty Name="ubg_prov" ColumnName="ubg_prov" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Ubigeo_Region" FunctionName="dbLibreriaModel.Store.usp_Ubigeo_Region">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_Ubigeo_Region_Result">
+                <ScalarProperty Name="ubg_reg_id" ColumnName="ubg_reg_id" />
+                <ScalarProperty Name="ubg_reg" ColumnName="ubg_reg" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ValidarUsuario" FunctionName="dbLibreriaModel.Store.usp_ValidarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ValidarUsuario_Result">
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+                <ScalarProperty Name="per_mail" ColumnName="per_mail" />
+                <ScalarProperty Name="per_pass" ColumnName="per_pass" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RentasMensuales" FunctionName="dbLibreriaModel.Store.usp_RentasMensuales">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_RentasMensuales_Result">
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Rentas" ColumnName="Rentas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_RentasxGenero" FunctionName="dbLibreriaModel.Store.usp_RentasxGenero" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_RentasxGenero_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_FiltrarClientes" FunctionName="dbLibreriaModel.Store.usp_FiltrarClientes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_FiltrarClientes_Result">
+                <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+                <ScalarProperty Name="cli_tel" ColumnName="cli_tel" />
+                <ScalarProperty Name="cli_mail" ColumnName="cli_mail" />
+                <ScalarProperty Name="cli_memb_tipo" ColumnName="cli_memb_tipo" />
+                <ScalarProperty Name="cli_memb_cad" ColumnName="cli_memb_cad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ListarClienteSimple" FunctionName="dbLibreriaModel.Store.usp_ListarClienteSimple">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbLibreriaModel.usp_ListarClienteSimple_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Tipo_Membresia" ColumnName="Tipo_Membresia" />
+                <ScalarProperty Name="Caducidad" ColumnName="Caducidad" />
+                <ScalarProperty Name="cliente" ColumnName="cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

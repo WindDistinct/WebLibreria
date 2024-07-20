@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{537187E7-5CD2-49AB-A0C2-0C135D243009}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebLibreria_ADO</RootNamespace>
+    <AssemblyName>WebLibreria_ADO</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autor_ADO.cs" />
+    <Compile Include="Cliente_ADO.cs" />
+    <Compile Include="Genero_ADO.cs" />
+    <Compile Include="Renta_ADO.cs" />
+    <Compile Include="dbLibreria.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbLibreria.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbLibreria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbLibreria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbLibreria.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tb_Almacen.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Autor.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Cliente.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Editorial.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Ejemplar.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Genero.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Libro.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Personal.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Renta.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Requerimiento.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Requerimiento_detalle.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tb_Ubigeo.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarAutor_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarCliente_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ConsultarLibro_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_FiltrarClientes_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_FiltrarLibrosxPeriodo_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarAutorCompuesto_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarAutor_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarClienteSimple_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarCliente_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarEditorial_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarGenero_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarLibro_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RentasMensuales_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_RentasxGenero_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_DistritosProvinciaRegion_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_ProvinciasRegion_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_Ubigeo_Region_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ValidarUsuario_Result.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_VistaAutor.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_VistaClientes.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_VistaLibro.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_VistaLibrosRentados.cs">
+      <DependentUpon>dbLibreria.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="dbLibreria.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbLibreria.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="dbLibreria.edmx.diagram">
+      <DependentUpon>dbLibreria.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbLibreria.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>dbLibreria.Context.cs</LastGenOutput>
+      <DependentUpon>dbLibreria.edmx</DependentUpon>
+    </Content>
+    <Content Include="dbLibreria.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dbLibreria.edmx</DependentUpon>
+      <LastGenOutput>dbLibreria.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebLibreria_BE\WebLibreria_BE.csproj">
+      <Project>{e7c99df0-1eca-48a6-841f-1d1273699dab}</Project>
+      <Name>WebLibreria_BE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
