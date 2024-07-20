@@ -11,7 +11,7 @@
                     
                 </div>
                 <div>
-                    <asp:Chart ID="grafTotales" runat="server">
+                    <asp:Chart ID="grafTotales" runat="server" Height="304px">
                         <series>
                             <asp:Series Name="Series1">
                             </asp:Series>
@@ -30,8 +30,8 @@
                 <div>
                     <p>Gráfico circular de ventas por categoría</p>
                 </div>
-                <div>
-                    <asp:Chart ID="Chart1" runat="server">  
+                <div style="height: 302px">
+                    <asp:Chart ID="Chart1" runat="server" Height="291px">  
                         <Titles>
                             <asp:Title BackColor="224, 224, 224" Font="Microsoft Sans Serif, 8.25pt, style=Bold" Name="Titulo2" Text="Porcentaje de libros rentados"></asp:Title>
                         </Titles>  

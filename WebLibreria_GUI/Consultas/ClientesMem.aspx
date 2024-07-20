@@ -37,8 +37,8 @@
                 </tr>
             </table>
         </div>
-        <div>
-            <h2>Lista de clientes</h2>
+        <div class="filters">
+            <h3>Lista de clientes</h3>
             <asp:RadioButtonList id="rdbMemb" runat="server">
                 <asp:ListItem Value="1">Con membresía</asp:ListItem>
                 <asp:ListItem Value="0">Sin membresía</asp:ListItem>
